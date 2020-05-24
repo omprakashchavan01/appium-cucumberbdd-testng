@@ -2,7 +2,7 @@
 Cucumber-JVM + Appium + TestNG + Page Object Model with Parallel Execution!
 
 - Learn framework design step by step here (with JUnit runner): https://bit.ly/2T9ltJd
-- Update framework to use TestNG runner with parallel execution: https://youtu.be/lSPp5euGQAc
+- Update framework to use TestNG runner with parallel execution: https://bit.ly/2A3A6XR
 - Appium Tutorials from basic to advanced here: https://bit.ly/2XuyBeU
 - Subscribe to my channel here: https://bit.ly/2HNsidp
 
