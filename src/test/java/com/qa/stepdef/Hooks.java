@@ -31,7 +31,7 @@ public class Hooks {
     public void quit(Scenario scenario) throws IOException {
         if(scenario.isFailed()){
             byte[] screenshot = new DriverManager().getDriver().getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png", scenario.getName());
+            scenario.attach(screenshot, "image/png", scenario.getName());
         }
 
         new VideoManager().stopRecording(scenario.getName());

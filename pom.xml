@@ -21,7 +21,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
+                <version>3.0.0-M5</version>
                 <configuration>
                     <!-- Suite testng xml file to consider for test execution -->
                     <suiteXmlFiles>
@@ -37,13 +37,13 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>5.6.0</version>
+            <version>6.9.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>5.6.0</version>
+            <version>6.9.1</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
@@ -56,30 +56,30 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20190722</version>
+            <version>20201115</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.13.1</version>
+            <version>2.14.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.13.1</version>
+            <version>2.14.0</version>
         </dependency>
         <dependency>
             <groupId>de.monochromata.cucumber</groupId>
             <artifactId>reporting-plugin</artifactId>
-            <version>4.0.49</version>
+            <version>4.0.86</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>5.6.0</version>
+            <version>6.9.1</version>
         </dependency>
 
     </dependencies>

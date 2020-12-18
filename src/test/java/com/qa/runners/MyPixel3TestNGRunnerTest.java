@@ -27,7 +27,7 @@ package com.qa.runners;
         ,dryRun=false
         ,monochrome=true
         ,strict=true
-        ,tags = {"@test"}
+        ,tags = "@test"
         )
 public class MyPixel3TestNGRunnerTest extends RunnerBase {
 }

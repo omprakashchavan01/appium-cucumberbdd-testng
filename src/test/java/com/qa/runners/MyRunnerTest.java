@@ -24,7 +24,7 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
         ,dryRun=false
         ,monochrome=true
         ,strict=true
-        ,tags = {"@test"}
+        ,tags = "@test"
 
 )
 

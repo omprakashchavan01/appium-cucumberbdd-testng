@@ -4,21 +4,21 @@
 	<test name="Pixel3">
 		<parameter name="platformName" value="Android" />
 		<parameter name="udid" value="emulator-5554" />
-		<parameter name="deviceName" value="Pixel3" />
+		<parameter name="deviceName" value="pixel_3a_API_30_x86" />
 		<parameter name="systemPort" value="10000" />
 		<parameter name="chromeDriverPort" value="11000" />
 		<classes>
-			<class name="com.qa.runners.MyPixel3TestNGRunnerTest"></class>
+			<class name="com.qa.runners.MyPixel3TestNGRunnerTest"/>
 		</classes>
 	</test>
 	<test name="Pixel2XL">
 		<parameter name="platformName" value="Android" />
 		<parameter name="udid" value="emulator-5556" />
-		<parameter name="deviceName" value="Pixel2XL" />
+		<parameter name="deviceName" value="Pixel_4_API_30" />
 		<parameter name="systemPort" value="10001" />
 		<parameter name="chromeDriverPort" value="11001" />
 		<classes>
-			<class name="com.qa.runners.MyPixel2XLTestNGRunnerTest"></class>
+			<class name="com.qa.runners.MyPixel2XLTestNGRunnerTest"/>
 		</classes>
 	</test>
 </suite> <!-- Suite -->

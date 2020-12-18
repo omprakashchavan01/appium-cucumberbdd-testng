@@ -25,7 +25,7 @@ import org.testng.annotations.*;
         ,dryRun=false
         ,monochrome=true
         ,strict=true
-        ,tags = {"@test"}
+        ,tags = "@test"
         )
 public class MyPixel2XLTestNGRunnerTest extends RunnerBase {
 
