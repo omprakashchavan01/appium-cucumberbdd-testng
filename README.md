@@ -1,5 +1,5 @@
 # appium-cucumberbdd-testng
-Appium mobile test automation framework with Page Object Model design using Java + Cucumber + Maven + TestNG + JUnit.
+Appium mobile test automation framework with Page Object Model design using Java + Cucumber + Maven + TestNG.
 Framework follows many of the industry best practices and supports Android and iOS in a single code base.
 
 **Step by step instructions to build this framework from scratch is in this Highest Rated Udemy course.
@@ -16,7 +16,6 @@ Technologies/Tools used in building the framework
 - Java - Programming language
 - Cucumber - BDD
 - Gherkin - DSL
-- JUnit - Unit testing framework
 - TestNG - Test Management library
 - Log4J - Logging framework
 - Extent Reports - Reporting framework
@@ -40,7 +39,6 @@ Framework implements below best practices
 - How to recover from test failure/ how to write fail safe test cases
 - Scrolling for both Android and iOS (using touchaction, uiScrollable, mobile:scroll)
 - Demonstrates how to effectively capture Screenshots/Videos
-- Supports parallel execution using JUnit
 - Supports parallel execution using TestNG
 - Supports parallel execution on multiple real Android and iOS devices
 - Start Appium server propgrammatically
