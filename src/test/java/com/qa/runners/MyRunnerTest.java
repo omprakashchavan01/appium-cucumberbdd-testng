@@ -17,13 +17,12 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
         plugin = {"pretty"
                 , "html:target/cucumber"
                 , "summary"
-                , "de.monochromata.cucumber.report.PrettyReports:target/cucumber-html-reports"}
+                , "me.jvt.cucumber.report.PrettyReports:target/Pixel3/cucumber-html-reports"}
         ,features = {"src/test/resources"}
         ,glue = {"com.qa.stepdef"}
         ,snippets = CAMELCASE
         ,dryRun=false
         ,monochrome=true
-        ,strict=true
         ,tags = "@test"
 
 )

@@ -1,13 +1,10 @@
 package com.qa.stepdef;
 
 import com.qa.utils.DriverManager;
-import com.qa.utils.GlobalParams;
-import com.qa.utils.ServerManager;
 import com.qa.utils.VideoManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.OutputType;
 
 import java.io.IOException;
