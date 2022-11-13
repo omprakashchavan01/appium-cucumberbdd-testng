@@ -8,12 +8,14 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.HashMap;
 
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
@@ -21,7 +23,7 @@ import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofMillis;
 
 public class BasePage {
-    private AppiumDriver<?> driver;
+    private AppiumDriver driver;
     TestUtils utils = new TestUtils();
 
     public BasePage(){
@@ -29,27 +31,27 @@ public class BasePage {
         PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
     }
 
-    public void waitForVisibility(MobileElement e) {
-        WebDriverWait wait = new WebDriverWait(driver, TestUtils.WAIT);
+    public void waitForVisibility(WebElement e) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TestUtils.WAIT));
         wait.until(ExpectedConditions.visibilityOf(e));
     }
 
     public void waitForVisibility(By e) {
-        WebDriverWait wait = new WebDriverWait(driver, TestUtils.WAIT);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TestUtils.WAIT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(e));
     }
 
-    public void clear(MobileElement e) {
+    public void clear(WebElement e) {
         waitForVisibility(e);
         e.clear();
     }
 
-    public void click(MobileElement e) {
+    public void click(WebElement e) {
         waitForVisibility(e);
         e.click();
     }
 
-    public void click(MobileElement e, String msg) {
+    public void click(WebElement e, String msg) {
         waitForVisibility(e);
         utils.log().info(msg);
         e.click();
@@ -61,18 +63,18 @@ public class BasePage {
         driver.findElement(e).click();
     }
 
-    public void sendKeys(MobileElement e, String txt) {
+    public void sendKeys(WebElement e, String txt) {
         waitForVisibility(e);
         e.sendKeys(txt);
     }
 
-    public void sendKeys(MobileElement e, String txt, String msg) {
+    public void sendKeys(WebElement e, String txt, String msg) {
         waitForVisibility(e);
         utils.log().info(msg);
         e.sendKeys(txt);
     }
 
-    public String getAttribute(MobileElement e, String attribute) {
+    public String getAttribute(WebElement e, String attribute) {
         waitForVisibility(e);
         return e.getAttribute(attribute);
     }
@@ -82,7 +84,7 @@ public class BasePage {
         return driver.findElement(e).getAttribute(attribute);
     }
 
-    public String getText(MobileElement e, String msg) {
+    public String getText(WebElement e, String msg) {
         String txt;
         switch(new GlobalParams().getPlatformName()){
             case "Android":
@@ -115,20 +117,36 @@ public class BasePage {
     }
 
     public void closeApp() {
-        ((InteractsWithApps) driver).closeApp();
+        switch(new GlobalParams().getPlatformName()){
+            case "Android":
+                ((InteractsWithApps) driver).terminateApp(driver.getCapabilities().
+                        getCapability("appPackage").toString());
+                break;
+            case "iOS":
+                ((InteractsWithApps) driver).terminateApp(driver.getCapabilities().
+                        getCapability("bundleId").toString());
+        }
     }
 
     public void launchApp() {
-        ((InteractsWithApps) driver).launchApp();
+        switch(new GlobalParams().getPlatformName()){
+            case "Android":
+                ((InteractsWithApps) driver).activateApp(driver.getCapabilities().
+                        getCapability("appPackage").toString());
+                break;
+            case "iOS":
+                ((InteractsWithApps) driver).activateApp(driver.getCapabilities().
+                        getCapability("bundleId").toString());
+        }
     }
 
-    public MobileElement andScrollToElementUsingUiScrollable(String childLocAttr, String childLocValue) {
-        return (MobileElement) ((FindsByAndroidUIAutomator) driver).findElementByAndroidUIAutomator(
+    public WebElement andScrollToElementUsingUiScrollable(String childLocAttr, String childLocValue) {
+        return driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector()" + ".scrollable(true)).scrollIntoView("
-                        + "new UiSelector()."+ childLocAttr +"(\"" + childLocValue + "\"));");
+                        + "new UiSelector()."+ childLocAttr +"(\"" + childLocValue + "\"));"));
     }
 
-    public MobileElement iOSScrollToElementUsingMobileScroll(MobileElement e) {
+    public WebElement iOSScrollToElementUsingMobileScroll(WebElement e) {
         RemoteWebElement element = ((RemoteWebElement) e);
         String elementID = element.getId();
         HashMap<String, String> scrollObject = new HashMap<String, String>();
@@ -141,7 +159,7 @@ public class BasePage {
         return e;
     }
 
-    public By iOSScrollToElementUsingMobileScrollParent(MobileElement parentE, String predicateString) {
+    public By iOSScrollToElementUsingMobileScrollParent(WebElement parentE, String predicateString) {
         RemoteWebElement parent = (RemoteWebElement)parentE;
         String parentID = parent.getId();
         HashMap<String, String> scrollObject = new HashMap<String, String>();
@@ -156,7 +174,7 @@ public class BasePage {
         return m;
     }
 
-    public MobileElement scrollToElement(MobileElement element, String direction) throws Exception {
+/*    public MobileElement scrollToElement(MobileElement element, String direction) throws Exception {
         Dimension size = driver.manage().window().getSize();
         int startX = (int) (size.width * 0.5);
         int endX = (int) (size.width * 0.5);
@@ -222,11 +240,11 @@ public class BasePage {
             throw new Exception("Element not found");
         }
         return element;
-    }
+    }*/
 
-    public boolean find(final MobileElement element, int timeout) {
+    public boolean find(final WebElement element, int timeout) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
             return wait.until(new ExpectedCondition<Boolean>() {
                 @Override
                 public Boolean apply(WebDriver driver) {
@@ -243,7 +261,7 @@ public class BasePage {
 
     public boolean find(final By element, int timeout) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
             return wait.until(new ExpectedCondition<Boolean>() {
                 @Override
                 public Boolean apply(WebDriver driver) {
@@ -258,10 +276,10 @@ public class BasePage {
         }
     }
 
-    public void swipe(int startX, int startY, int endX, int endY, int millis)
+/*    public void swipe(int startX, int startY, int endX, int endY, int millis)
             throws InterruptedException {
         TouchAction t = new TouchAction(driver);
         t.press(point(startX, startY)).waitAction(waitOptions(ofMillis(millis))).moveTo(point(endX, endY)).release()
                 .perform();
-    }
+    }*/
 }

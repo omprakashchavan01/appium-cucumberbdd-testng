@@ -2,20 +2,20 @@ package com.qa.pages;
 
 import com.qa.utils.GlobalParams;
 import com.qa.utils.TestUtils;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class ProductsPage extends MenuPage {
 	TestUtils utils = new TestUtils();
 	
 	@AndroidFindBy (xpath = "//android.widget.ScrollView[@content-desc=\"test-PRODUCTS\"]/preceding-sibling::android.view.ViewGroup/android.widget.TextView") 
 	@iOSXCUITFindBy (xpath ="//XCUIElementTypeOther[@name=\"test-Toggle\"]/parent::*[1]/preceding-sibling::*[1]")
-	private MobileElement titleTxt;
+	private WebElement titleTxt;
 
 	@iOSXCUITFindBy (xpath = "//XCUIElementTypeOther[@name=\"test-PRODUCTS\"]/XCUIElementTypeScrollView")
-	private MobileElement iOSSCrollView;
+	private WebElement iOSSCrollView;
 
 	public String getTitle() {
 		return getText(titleTxt, "product page title is - ");
@@ -44,9 +44,9 @@ public class ProductsPage extends MenuPage {
 		}
 	}
 
-	public String getProductPrice(String title, String price) throws Exception {
+/*	public String getProductPrice(String title, String price) throws Exception {
 		return getText(scrollToElement(defProductPrice(title), "up"), "product price is: " + price);
-	}
+	}*/
 
 	public ProductDetailsPage pressProductTitle(String title) throws Exception {
 		switch(new GlobalParams().getPlatformName()){
