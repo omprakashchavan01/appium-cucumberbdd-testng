@@ -30,7 +30,7 @@ public class CapabilitiesManager {
                     caps.setCapability("chromeDriverPort", params.getChromeDriverPort());
                     //String androidAppUrl = getClass().getResource(props.getProperty("androidAppLocation")).getFile();
                     String androidAppUrl = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-                            + File.separator + "resources" + File.separator + "apps" + File.separator + "Android.SauceLabs.Mobile.Sample.app.2.2.1.apk";
+                            + File.separator + "resources" + File.separator + "apps" + File.separator + "Android.SauceLabs.Mobile.Sample.app.2.7.1.apk";
                     utils.log().info("appUrl is" + androidAppUrl);
                     caps.setCapability("app", androidAppUrl);
                     break;
