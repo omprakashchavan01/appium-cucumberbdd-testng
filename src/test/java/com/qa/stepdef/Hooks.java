@@ -1,5 +1,6 @@
 package com.qa.stepdef;
 
+import com.qa.pages.BasePage;
 import com.qa.utils.DriverManager;
 import com.qa.utils.VideoManager;
 import io.cucumber.java.After;
@@ -13,6 +14,9 @@ public class Hooks {
 
     @Before
     public void initialize() throws Exception {
+        BasePage basePage = new BasePage();
+        basePage.closeApp();
+        basePage.launchApp();
 /*        GlobalParams params = new GlobalParams();
         params.initializeGlobalParams();
 

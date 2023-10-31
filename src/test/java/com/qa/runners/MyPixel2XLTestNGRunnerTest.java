@@ -9,9 +9,10 @@ import io.cucumber.testng.CucumberOptions;
  */
 @CucumberOptions(
         plugin = {"pretty"
-        , "html:target/Pixel2XL/cucumber"
+        , "html:target/Pixel2XL/cucumber/report.html"
         , "summary"
-        , "me.jvt.cucumber.report.PrettyReports:target/Pixel3/cucumber-html-reports"}
+//        , "me.jvt.cucumber.report.PrettyReports:target/Pixel3/cucumber-html-reports"
+        }
         ,features = {"src/test/resources"}
         ,glue = {"com.qa.stepdef"}
         ,dryRun=false
