@@ -169,7 +169,7 @@ public class BasePage {
 //	  scrollObject.put("name", "test-ADD TO CART");
 //        scrollObject.put("toVisible", "sdfnjksdnfkld");
         driver.executeScript("mobile:scroll", scrollObject);
-        By m = MobileBy.iOSNsPredicateString(predicateString);
+        By m = AppiumBy.iOSNsPredicateString(predicateString);
         System.out.println("Mobilelement is " + m);
         return m;
     }
